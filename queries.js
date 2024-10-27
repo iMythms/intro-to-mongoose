@@ -20,14 +20,29 @@ const connect = async () => {
 	process.exit()
 }
 
+const createTodo = async () => {
+	const todoData = {
+		// text: 'Learn JS',
+		// isComplete: false,
+		// text: 'Learn CSS',
+		// isComplete: true,
+		text: 'Learn React',
+		isComplete: true,
+	}
+
+	const todo = await Todo.create(todoData)
+	console.log('New todo:', todo)
+}
+
+const findTodo = async () => {
+	const todo = await Todo.find({})
+	console.log(`All todo: ${todo}`)
+}
+
 const runQueries = async () => {
 	console.log('Queries running.')
-	// The functions calls to run queries in our db will go here as we write them.
-	const todo = await Todo.create({
-		text: 'Learn JS',
-		isComplete: false,
-	})
-	console.log(todo)
+	// createTodo()
+	await findTodo()
 }
 
 connect()
